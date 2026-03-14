@@ -40,7 +40,7 @@ export default function HeroSection() {
           >
             najia kayyasa x-10
             <br />
-            <span className="text-gradient"> tugas 
+            <span className="text-gradient"> tugas coding
               
             </span>
           </motion.h1>

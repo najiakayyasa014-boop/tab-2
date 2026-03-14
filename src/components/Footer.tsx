@@ -5,7 +5,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: Github, href: '#', label: 'GitHub' },
+    { icon: Github, href: 'https://github.com/najiakayyasa014-boop/tab-2.git', label: 'GitHub' },
     { icon: Linkedin, href: '#', label: 'LinkedIn' },
     { icon: Youtube, href: '#', label: 'YouTube' },
     { icon: Instagram, href: '#', label: 'Instagram' },
@@ -23,7 +23,7 @@ export default function Footer() {
           >
             <span>© {currentYear} Made with</span>
             <Heart className="h-4 w-4 text-destructive fill-destructive" />
-            <span>by Developer</span>
+            <span>by najia. k</span>
           </motion.div>
 
           <motion.div
