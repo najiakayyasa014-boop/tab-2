@@ -15,15 +15,16 @@ export default function AboutSection() {
   const accordionData = [
     {
       title: "Passionate Developer",
-      content: "Saya adalah seorang Fullstack Web Developer dengan passion yang kuat dalam menciptakan solusi digital yang inovatif. saya telah membantu berbagai klien mewujudkan ide mereka."
+      content: "Saya adalah seorang Fullstack Web Developer dengan passion yang kuat dalam menciptakan solusi digital yang inovatif. saya Menguasai React, Node.js, dan database SQL/NoSQL untuk membangun aplikasi skala besar dan saya telah membantu berbagai klien mewujudkan ide mereka."
+  
     },
     {
       title: "Content Creator",
-      content: "Selain coding, saya juga aktif sebagai Content Creator, berbagi pengetahuan tentang pemrograman dan teknologi. Saya percaya berbagi ilmu adalah cara terbaik untuk terus berkembang."
+      content: "Selain coding, saya juga aktif sebagai Content Creator, berbagi pengetahuan tentang pemrograman dan teknologi. Saya percaya berbagi ilmu adalah cara terbaik untuk terus berkembang dan cara saya memahami dan mempelajarinya lebih dalam untuk mengenal semuanya lebih rinci dan bisa membantu orang-orang."
     },
     {
       title: "Visi & Misi",
-      content: "Fokus utama saya adalah membangun aplikasi yang tidak hanya fungsional secara teknis, tetapi juga memberikan pengalaman pengguna (UX) yang luar biasa dan berkesan."
+      content: "Fokus utama saya adalah membangun aplikasi yang tidak hanya fungsional secara teknis, tetapi juga memberikan pengalaman pengguna (UX) yang luar biasa dan berkesan atas semua ilmu yang telah saya pelajari dan saya ketahui."
     }
   ];
 
@@ -56,6 +57,7 @@ export default function AboutSection() {
             <div className="relative group">
               <div className="aspect-square rounded-2xl overflow-hidden glass shadow-card relative z-10">
                 <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+
                   <motion.span 
                     animate={{ y: [0, -20, 0] }}
                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -109,6 +111,15 @@ export default function AboutSection() {
                       >
                         <div className="p-4 pt-0 text-muted-foreground leading-relaxed">
                           {item.content}
+                          <motion.div>
+                         {/* Baris untuk konten pertama */}
+                          <div className="p-4 pt-0 text-muted-foreground leading-relaxed">
+                          </div>
+
+                         {/* Baris untuk konten kedua (yang baru kamu tambah) */}
+                         <div className="p-4 pt-0 text-muted-foreground leading-relaxed">
+                         </div>
+                         </motion.div>
                         </div>
                       </motion.div>
                     )}
@@ -137,6 +148,7 @@ export default function AboutSection() {
                   <stat.icon className="h-6 w-6 text-primary mx-auto mb-2" />
                   <p className="font-display text-2xl font-bold">{stat.value}</p>
                   <p className="text-sm text-muted-foreground">{stat.label}</p>
+
                 </motion.div>
               ))}
             </div>

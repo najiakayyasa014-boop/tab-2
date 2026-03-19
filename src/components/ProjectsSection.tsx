@@ -1,13 +1,100 @@
-import { motion } from 'framer-motion';
-import { ExternalLink, Github, Play } from 'lucide-react';
+"use client";
+
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ExternalLink, Github, Play, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
+// --- 0. IMPORT ASSETS ---
+import BukuImg from '../jifot/buku.jpg';
+import JoinUsGif from '../jifot/gif.gif';
+import SpiderGif from '../jifot/Spider.gif';
+
+// Pastikan variabel images ini ada di luar fungsi agar rapi
+const images = [BukuImg, JoinUsGif, SpiderGif];
+
+const slideVariants = {
+  enter: (direction: number) => ({
+    x: direction > 0 ? 1000 : -1000,
+    opacity: 0
+  }),
+  center: {
+    zIndex: 1,
+    x: 0,
+    opacity: 1
+  },
+  exit: (direction: number) => ({
+    zIndex: 0,
+    x: direction < 0 ? 1000 : -1000,
+    opacity: 0
+  })
+};
+
+export default function ProjectsSection() {
+  const [imageIndex, setImageIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+
+  const paginate = (newDirection: number) => {
+    setDirection(newDirection);
+    setImageIndex((prevIndex) => {
+      let nextIndex = prevIndex + newDirection;
+      if (nextIndex < 0) nextIndex = images.length - 1;
+      if (nextIndex >= images.length) nextIndex = 0;
+      return nextIndex;
+    });
+  };
+
+    <div className="relative group/carousel flex items-center justify-center w-full h-[500px] overflow-hidden rounded-xl touch-none bg-black">
+      <AnimatePresence initial={false} custom={direction}>
+        <motion.img
+          key={imageIndex}
+          src={images[imageIndex]}
+          custom={direction}
+          variants={slideVariants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{
+            x: { type: "spring", stiffness: 300, damping: 30 },
+            opacity: { duration: 0.2 }
+          }}
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={1}
+          onDragEnd={(e, { offset, velocity }) => {
+            const swipe = Math.abs(offset.x) > 50;
+            if (swipe) {
+              paginate(offset.x > 0 ? -1 : 1);
+            }
+          }}
+          className="w-full h-full object-cover absolute select-none cursor-grab active:cursor-grabbing"
+        />
+      </AnimatePresence>
+
+      {/* Tombol Navigasi Manual */}
+      <div className="absolute inset-0 flex items-center justify-between p-4 z-10 pointer-events-none">
+        <Button 
+          onClick={() => paginate(-1)} 
+          className="pointer-events-auto bg-black/50 hover:bg-black rounded-full p-2"
+        >
+          <ChevronLeft className="w-6 h-6 text-white" />
+        </Button>
+        <Button 
+          onClick={() => paginate(1)} 
+          className="pointer-events-auto bg-black/50 hover:bg-black rounded-full p-2"
+        >
+          <ChevronRight className="w-6 h-6 text-white" />
+        </Button>
+      </div>
+    </div>
+;
+}
 const projects = [
   {
     title: 'E-Commerce Platform',
     description: 'Platform e-commerce modern dengan fitur lengkap termasuk payment gateway, inventory management, dan analytics dashboard.',
     tags: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
-    image: '🛒',
+    image: '✏️',
     color: 'from-blue-500/20 to-cyan-500/20',
     github: '#',
     demo: '#',
@@ -16,7 +103,7 @@ const projects = [
     title: 'Learning Management System',
     description: 'Platform pembelajaran online dengan video streaming, quiz interaktif, dan progress tracking.',
     tags: ['Next.js', 'TypeScript', 'MongoDB', 'WebRTC'],
-    image: '📚',
+    image: '📕',
     color: 'from-purple-500/20 to-pink-500/20',
     github: '#',
     demo: '#',
@@ -25,7 +112,7 @@ const projects = [
     title: 'Social Media Dashboard',
     description: 'Dashboard analytics untuk social media dengan real-time data visualization dan reporting.',
     tags: ['React', 'D3.js', 'Firebase', 'Tailwind'],
-    image: '📊',
+    image: '🧪',
     color: 'from-orange-500/20 to-red-500/20',
     github: '#',
     demo: '#',
@@ -58,9 +145,6 @@ const projects = [
     youtube: '#',
   },
 ];
-
-export default function ProjectsSection() {
-  return (
     <section id="projects" className="py-20 md:py-32 bg-muted/30">
       <div className="container mx-auto px-4">
         <motion.div
@@ -152,5 +236,5 @@ export default function ProjectsSection() {
         </div>
       </div>
     </section>
-  );
-}
+;
+
