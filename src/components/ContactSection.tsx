@@ -31,7 +31,7 @@ const contactInfo = [
   {
     icon: MapPin,
     label: 'Lokasi',
-    value: 'Jakarta, Indonesia',
+    value: 'banda aceh, Indonesia',
     href: '#',
   },
 ];
