@@ -6,9 +6,9 @@ import { ExternalLink, Github, Play, ChevronLeft, ChevronRight } from 'lucide-re
 import { Button } from '@/components/ui/button';
 
 // --- 0. IMPORT ASSETS ---
-import BukuImg from '../jifot/buku.jpg'; 
+import BukuImg from '../jifot/buku.png.jpg'; 
 import JoinUsGif from '../jifot/gif.gif';
-import SpiderGif from '../jifot/Spider.gif';
+import SpiderGif from '../jifot/Spider.gif.gif';
 
 const images = [BukuImg, JoinUsGif, SpiderGif];
 
