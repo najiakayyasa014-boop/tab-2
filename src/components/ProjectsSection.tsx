@@ -6,11 +6,10 @@ import { ExternalLink, Github, Play, ChevronLeft, ChevronRight } from 'lucide-re
 import { Button } from '@/components/ui/button';
 
 // --- 0. IMPORT ASSETS ---
-import BukuImg from '../jifot/buku.jpg';
+import BukuImg from '../jifot/buku.jpg'; 
 import JoinUsGif from '../jifot/gif.gif';
 import SpiderGif from '../jifot/Spider.gif';
 
-// Pastikan variabel images ini ada di luar fungsi agar rapi
 const images = [BukuImg, JoinUsGif, SpiderGif];
 
 const slideVariants = {
@@ -30,65 +29,6 @@ const slideVariants = {
   })
 };
 
-export default function ProjectsSection() {
-  const [imageIndex, setImageIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
-
-  const paginate = (newDirection: number) => {
-    setDirection(newDirection);
-    setImageIndex((prevIndex) => {
-      let nextIndex = prevIndex + newDirection;
-      if (nextIndex < 0) nextIndex = images.length - 1;
-      if (nextIndex >= images.length) nextIndex = 0;
-      return nextIndex;
-    });
-  };
-
-    <div className="relative group/carousel flex items-center justify-center w-full h-[500px] overflow-hidden rounded-xl touch-none bg-black">
-      <AnimatePresence initial={false} custom={direction}>
-        <motion.img
-          key={imageIndex}
-          src={images[imageIndex]}
-          custom={direction}
-          variants={slideVariants}
-          initial="enter"
-          animate="center"
-          exit="exit"
-          transition={{
-            x: { type: "spring", stiffness: 300, damping: 30 },
-            opacity: { duration: 0.2 }
-          }}
-          drag="x"
-          dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={1}
-          onDragEnd={(e, { offset, velocity }) => {
-            const swipe = Math.abs(offset.x) > 50;
-            if (swipe) {
-              paginate(offset.x > 0 ? -1 : 1);
-            }
-          }}
-          className="w-full h-full object-cover absolute select-none cursor-grab active:cursor-grabbing"
-        />
-      </AnimatePresence>
-
-      {/* Tombol Navigasi Manual */}
-      <div className="absolute inset-0 flex items-center justify-between p-4 z-10 pointer-events-none">
-        <Button 
-          onClick={() => paginate(-1)} 
-          className="pointer-events-auto bg-black/50 hover:bg-black rounded-full p-2"
-        >
-          <ChevronLeft className="w-6 h-6 text-white" />
-        </Button>
-        <Button 
-          onClick={() => paginate(1)} 
-          className="pointer-events-auto bg-black/50 hover:bg-black rounded-full p-2"
-        >
-          <ChevronRight className="w-6 h-6 text-white" />
-        </Button>
-      </div>
-    </div>
-;
-}
 const projects = [
   {
     title: 'E-Commerce Platform',
@@ -145,8 +85,81 @@ const projects = [
     youtube: '#',
   },
 ];
+
+export default function ProjectsSection() {
+  const [imageIndex, setImageIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+
+  const paginate = (newDirection: number) => {
+    setDirection(newDirection);
+    setImageIndex((prevIndex) => {
+      let nextIndex = prevIndex + newDirection;
+      if (nextIndex < 0) nextIndex = images.length - 1;
+      if (nextIndex >= images.length) nextIndex = 0;
+      return nextIndex;
+    });
+  };
+
+  return (
     <section id="projects" className="py-20 md:py-32 bg-muted/30">
       <div className="container mx-auto px-4">
+        
+        {/* CAROUSEL SECTION */}
+        <div className="relative group/carousel flex items-center justify-center w-full max-w-4xl mx-auto h-[400px] overflow-hidden rounded-xl touch-none mb-20 shadow-2xl">
+          <AnimatePresence initial={false} custom={direction}>
+            <motion.img
+              key={imageIndex}
+              src={images[imageIndex]}
+              custom={direction}
+              variants={slideVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{
+                x: { type: "spring", stiffness: 300, damping: 30 },
+                opacity: { duration: 0.2 }
+              }}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={1}
+              onDragEnd={(e, { offset }) => {
+                const swipe = Math.abs(offset.x) > 50;
+                if (swipe) {
+                  paginate(offset.x > 0 ? -1 : 1);
+                }
+              }}
+              className="absolute w-full h-full object-cover select-none cursor-grab active:cursor-grabbing"
+            />
+          </AnimatePresence>
+
+          <div className="absolute inset-0 flex items-center justify-between px-4 opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 z-10">
+            <button
+              onClick={(e) => { e.preventDefault(); paginate(-1); }}
+              className="p-2 rounded-full bg-black/40 backdrop-blur-md hover:bg-black/60 text-white transition-colors"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </button>
+            <button
+              onClick={(e) => { e.preventDefault(); paginate(1); }}
+              className="p-2 rounded-full bg-black/40 backdrop-blur-md hover:bg-black/60 text-white transition-colors"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </button>
+          </div>
+
+          <div className="absolute bottom-5 flex gap-2 z-10">
+            {images.map((_, i) => (
+              <div
+                key={i}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  i === imageIndex ? 'w-6 bg-white' : 'w-2 bg-white/40'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* HEADER SECTION */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -154,13 +167,14 @@ const projects = [
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-primary font-medium mb-2 block">Portfolio</span>
+          <span className="text-primary font-medium mb-2 block text-sm tracking-widest uppercase">Portfolio</span>
           <h2 className="font-display text-3xl md:text-5xl font-bold mb-4">
             Projects &amp; Karya
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
         </motion.div>
 
+        {/* GRID PROJECTS */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
           {projects.map((project, index) => (
             <motion.div
@@ -171,7 +185,7 @@ const projects = [
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group"
             >
-              <div className="h-full p-6 glass rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-2">
+              <div className="h-full p-6 bg-background/50 backdrop-blur-sm border border-border rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-2">
                 <div className={`aspect-video rounded-xl mb-4 flex items-center justify-center bg-gradient-to-br ${project.color}`}>
                   <span className="text-6xl">{project.image}</span>
                 </div>
@@ -204,7 +218,7 @@ const projects = [
                   </div>
                   
                   <div className="flex gap-2 pt-2">
-                    {project.github && (
+                    {project.github && project.github !== '#' && (
                       <Button variant="outline" size="sm" className="rounded-full" asChild>
                         <a href={project.github}>
                           <Github className="h-4 w-4 mr-1" />
@@ -212,7 +226,7 @@ const projects = [
                         </a>
                       </Button>
                     )}
-                    {project.demo && (
+                    {project.demo && project.demo !== '#' && (
                       <Button size="sm" className="rounded-full" asChild>
                         <a href={project.demo}>
                           <ExternalLink className="h-4 w-4 mr-1" />
@@ -220,7 +234,7 @@ const projects = [
                         </a>
                       </Button>
                     )}
-                    {project.youtube && (
+                    {project.youtube && project.youtube !== '#' && (
                       <Button size="sm" className="rounded-full" asChild>
                         <a href={project.youtube}>
                           <Play className="h-4 w-4 mr-1" />
@@ -236,5 +250,5 @@ const projects = [
         </div>
       </div>
     </section>
-;
-
+  );
+}
