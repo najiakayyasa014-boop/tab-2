@@ -108,7 +108,7 @@ export default function ProjectsSection() {
         <div className="relative group/carousel flex items-center justify-center w-full max-w-4xl mx-auto h-[400px] overflow-hidden rounded-xl touch-none mb-20 shadow-2xl">
           <AnimatePresence initial={false} custom={direction}>
             <motion.img
-              key={imageIndex}
+             key={imageIndex}
               src={images[imageIndex]}
               custom={direction}
               variants={slideVariants}
@@ -185,7 +185,7 @@ export default function ProjectsSection() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group"
             >
-              <div className="h-full p-6 bg-background/50 backdrop-blur-sm border border-border rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-2">
+              <div className="h-full p-6 bg-background/50 backdrop-blur-sm border rounded-2xl">
                 <div className={`aspect-video rounded-xl mb-4 flex items-center justify-center bg-gradient-to-br ${project.color}`}>
                   <span className="text-6xl">{project.image}</span>
                 </div>
