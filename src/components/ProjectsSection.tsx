@@ -6,11 +6,11 @@ import { ChevronLeft, ChevronRight, Github, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 // 1. Pastikan file gambar ini benar-benar ada di folder src/jifot/
-import BukuImg from '../jifot/buku.jpg'; 
-import JoinUsGif from '../jifot/gif.gif';
-import SpiderGif from '../jifot/Spider.gif';
+import Bukuavif from '../jigif/buku.avif'; 
+import JoinUsGif from '../jigif/gif.gif';
+import SpiderGif from '../jigif/Spider.gif';
 
-const images = [BukuImg, JoinUsGif, SpiderGif];
+const images = [Bukuavif, JoinUsGif, SpiderGif];
 
 const slideVariants = {
   enter: (direction: number) => ({ x: direction > 0 ? 1000 : -1000, opacity: 0 }),
@@ -23,7 +23,7 @@ const projects = [
     title: 'E-Commerce Platform',
     description: 'Platform e-commerce modern dengan fitur lengkap.',
     tags: ['React', 'Node.js'],
-    image: '✏️',
+    image: 'Bukuavif, JoinUsGif, SpiderGif',
     color: 'from-blue-500/20 to-cyan-500/20',
     github: '#',
     demo: '#',
@@ -32,7 +32,7 @@ const projects = [
     title: 'Learning Management System',
     description: 'Platform pembelajaran online dengan video streaming.',
     tags: ['Next.js', 'TypeScript'],
-    image: '📕',
+    image: ['🔑', '⭐', '🍌'],
     color: 'from-purple-500/20 to-pink-500/20',
     github: '#',
     demo: '#',
