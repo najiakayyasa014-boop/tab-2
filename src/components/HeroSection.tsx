@@ -30,13 +30,13 @@ export default function HeroSection() {
               <div className="absolute inset-0 bg-primary/20 rounded-2xl blur-3xl animate-pulse"></div>
               
               {/* Frame Foto */}
-              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary shadow-glow relative z-10">
-                <img 
-                  src="/public/1 (2).jpeg" // Ganti dengan URL foto Anda
-                  alt="Najia"
-                  className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border-primary shadow-glow" 
-  />
-              </div>
+              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary shadow-glow relative">
+            <img
+          src="/public/1 (2).jpeg"
+          alt="Najia"
+          className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border-primary shadow-glow"
+              />
+             </div>
 
               {/* Dekorasi Tambahan (Opsional) */}
               <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-primary/10 rounded-full blur-2xl"></div>
@@ -50,14 +50,14 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <motion.img 
-                className="inline-block px-4 py-2 rounded-full glass text-sm font-medium text-primary mb-6"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2 }}
-              >
-                👋 Selamat datang di portfolio saya
-              </motion.img>
+             <motion.div 
+             className="inline-block px-4 py-2 rounded-full glass text-sm font-medium text-primary mb-6"
+             initial={{ opacity: 0, scale: 0.8 }}
+             animate={{ opacity: 1, scale: 1 }}
+             transition={{ delay: 0.2 }}
+>
+             👋 Selamat datang di portfolio saya
+            </motion.div>
             </motion.div>
 
             <motion.h1
