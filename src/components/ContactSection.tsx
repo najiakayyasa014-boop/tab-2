@@ -85,7 +85,7 @@ export default function ContactSection() {
         description: 'Terima kasih telah menghubungi saya. Saya akan membalas secepatnya.',
       });
 
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      setFormData({ name: 'najia kayyasa', email: 'najiakayyasa014@gmail.com', subject: '', message: '' });
     } catch (error) {
       console.error('Error sending email:', error);
       toast({
@@ -131,7 +131,7 @@ export default function ContactSection() {
               <p className="text-muted-foreground leading-relaxed">
                 Punya project menarik atau ingin berkolaborasi? Jangan ragu untuk 
                 menghubungi saya. Saya selalu terbuka untuk diskusi tentang project 
-                baru, ide kreatif, atau kesempatan untuk menjadi bagian dari visi Anda.
+                baru, ide kreatif,akan kita lakukan bersama-sama.
               </p>
             </div>
 
