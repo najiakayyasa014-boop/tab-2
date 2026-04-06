@@ -19,14 +19,14 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'Email',
-    value: 'hello@developer.com',
-    href: 'mailto:hello@developer.com',
+    value: 'najiakayyasa014@Gmail.com',
+    href: 'mailto:najiakayyasa014@Gmail.com',
   },
   {
     icon: Phone,
     label: 'Telepon',
-    value: '+62 812 3456 7890',
-    href: 'tel:+6281234567890',
+    value: '+62 821 2691 7348',
+    href: 'tel:+6282126917348',
   },
   {
     icon: MapPin,
@@ -85,7 +85,7 @@ export default function ContactSection() {
         description: 'Terima kasih telah menghubungi saya. Saya akan membalas secepatnya.',
       });
 
-      setFormData({ name: 'najia kayyasa', email: 'najiakayyasa014@gmail.com', subject: '', message: '' });
+      setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (error) {
       console.error('Error sending email:', error);
       toast({
