@@ -6,8 +6,8 @@
 
 @layer base {
   :root {
-    --background: 210 20% 98%;
-    --foreground: 220 20% 10%;
+    --background: 0 0% 100%;
+    --foreground: 213, 46%, 29%;
 
     --card: 0 0% 100%;
     --card-foreground: 220 20% 10%;
@@ -38,9 +38,9 @@
     --radius: 0.75rem;
 
     /* Custom tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(199, 86%, 61%), hsl(59, 100%, 72%));
+    --gradient-primary: linear-gradient(135deg, hsl(197, 86%, 77%), hsl(193, 100%, 62%));
     --gradient-hero: linear-gradient(180deg, hsl(210 20% 98%) 0%, hsl(210 25% 94%) 100%);
-    --navbg: linear-gradient(180deg, hsl(59, 100%, 72%) 0%, hsl(210 25% 94%) 100%);
+    --navbg: linear-gradient(180deg, hsl(197, 86%, 77%) 0%, hsl(210 25% 94%) 100%);
     --shadow-glow: 0 0 40px hsl(175 80% 40% / 0.3);
     --shadow-card: 0 4px 20px hsl(220 20% 10% / 0.08);
     --shadow-card-hover: 0 8px 30px hsla(188, 100%, 57%, 0.12);
@@ -56,8 +56,8 @@
   }
 
   .dark {
-    --background: 220 25% 6%;
-    --foreground: 210 20% 98%;
+    --background: 222.2 84% 4.9%;
+    --foreground: 197, 83%, 82%;
 
     --card: 220 25% 10%;
     --card-foreground: 210 20% 98%;
@@ -85,10 +85,10 @@
     --ring: 175 80% 50%;
 
     /* Custom tokens dark */
-    --gradient-primary: linear-gradient(135deg, hsl(57, 100%, 83%), hsl(191, 78%, 63%));
+    --gradient-primary: linear-gradient(135deg, hsl(197, 86%, 77%), hsl(193, 100%, 62%));
     --gradient-hero: linear-gradient(180deg, hsl(220 25% 6%) 0%, hsl(220 30% 10%) 100%);
-    --navbg: linear-gradient(180deg, hsl(62, 93%, 71%) 0%, hsl(0, 0%, 0%) 100%);
-    --shadow-glow: 0 0 60px hsl(59, 100%, 77%);
+    --navbg: linear-gradient(180deg, hsl(197, 86%, 77%) 0%, hsl(0, 0%, 0%) 100%);
+    --shadow-glow: 0 0 60px ;
     --shadow-card: 0 4px 20px hsl(0 0% 0% / 0.3);
     --shadow-card-hover: 0 8px 30px hsl(175 80% 50% / 0.15);
 
@@ -182,4 +182,54 @@
       opacity: 0.7;
     }
   }
+}
+/* Animasi Melayang */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+.ikan-bg {
+  display: inline-block;
+  animation: float 5s ease-in-out infinite;
+}
+:root {
+  --bg-underwater: radial-gradient(circle at center, #0a192f 0%, #020617 100%);
+}
+
+body {
+  background: var(--bg-underwater);
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* Animasi melayang halus untuk foto profil */
+@keyframes floating {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.floating-effect {
+  animation: floating 4s ease-in-out infinite;
+}
+@layer base {
+  :root {
+    /* Gradasi Biru Underwater */
+    --bg-underwater: radial-gradient(circle at center, #0a192f 0%, #020617 100%);
+  }
+}
+
+body {
+  /* Terapkan background ke seluruh halaman */
+  background: var(--bg-underwater);
+  margin: 0;
+  color: rgb(138, 200, 235);
+}
+
+/* Animasi untuk partikel/buih melayang halus */
+@keyframes float-particle {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  50% { opacity: 0.5; }
+  100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
 }
