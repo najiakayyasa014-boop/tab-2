@@ -40,11 +40,13 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'glass-strong shadow-card' : 'bg-transparent'
-      }`}
+     className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      isScrolled 
+      ? 'glass-strong shadow-card mx-4 mt-4 rounded-2xl' 
+      : 'bg-transparent'
+}`}
     >
-      <div className="container mx-auto px-4 bg-navbg">
+      <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
           <motion.a
             href="#home"
@@ -68,7 +70,7 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
                   e.preventDefault();
                   scrollToSection(item.href);
                 }}
-                className="text-muted-foreground hover:text-foreground transition-colors font-medium cursor-pointer"
+               className="px-4 py-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-white/20 transition-all duration-300 font-medium cursor-pointer"
                 whileHover={{ y: -2 }}
               >
                 {item.label}

@@ -19,9 +19,7 @@ export default function HeroSection() {
 
       {/* 2. ELEMEN DEKORASI: IKAN MELAYANG */}
       <img 
-        src="/ikan.png" 
-        className="ikan-bg absolute top-20 left-10 w-24 opacity-20 z-0 pointer-events-none" 
-        alt="Animasi Latar" 
+ 
       />
 
       <div className="container mx-auto px-4 relative z-10">
